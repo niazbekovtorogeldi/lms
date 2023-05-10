@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <context:property-placeholder location="application.properties"></context:property-placeholder>
+<bean id = "java" class="ru.torogeldi.springcourse.Java">
+</bean>
+    <bean id = "js" class="ru.torogeldi.springcourse.Js">
+    </bean>
+    <bean id = "course" class="ru.torogeldi.springcourse.Course">
+    </bean>
+    <bean id = "course2" class="ru.torogeldi.springcourse.Course">
+    <constructor-arg ref="java">
+    </constructor-arg>
+        <property name="duration" value="${duration}"/>
+        <property name="price" value="${price}">
+
+        </property>
+</bean>
+    <bean id = "course1" class="ru.torogeldi.springcourse.Course">
+        <constructor-arg ref="js">
+        </constructor-arg>
+        <property name="duration" value="${duration}"/>
+        <property name="price" value="${price}"/>
+    </bean>
+    <bean id="course3" class="ru.torogeldi.springcourse.Java">
+    </bean>
+    <bean id="course3" class="ru.torogeldi.springcourse.Course">
+        <property name="programing" ref="java" ></property>
+        <property name="duration" value="${duration}"/>
+        <property name="price" value="${price}">
+        </property>
+    </bean>
+    <bean id="course3 " class="ru.torogeldi.springcourse.Course">
+        <property name="programing" ref="js"></property>
+        <property name="duration" value="${duration}"/>
+        <property name="price" value="${price}">
+        </property>
+    </bean>
+    <bean id="course" class="ru.torogeldi.springcourse.Course">
+        <property name="programing">
+            <list>
+                <ref bean="java"></ref>
+                <ref bean="js"></ref>
+            </list>
+        </property>
+    </bean>
+
+</beans>
